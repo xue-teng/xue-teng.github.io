@@ -53,9 +53,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -76,10 +76,19 @@
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/03/Have a try with kNN to realize handwriting recognition/">Have a try with kNN to realize handwriting recognition</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<h2 id="Have-a-try-with-kNN-to-realize-handwriting-recognition"><a href="#Have-a-try-with-kNN-to-realize-handwriting-recognition" class="headerlink" title="Have a try with kNN to realize handwriting recognition"></a>Have a try with kNN to realize handwriting recognition</h2><p>The principle of k-Nearest Neighbor（kNN）is to compare the new data with the labeled data set, and choose K labels which are more similar with the new data according to Euclidean distance formula.<br>After reading the book <em>Machine Learning in Action</em> written by Peter Harrington, I try kNN algorithm to realize handwrting recognition.<br>kNN code as below:</p>
+        <p>The principle of k-Nearest Neighbor（kNN）is to compare the new data with the labeled data set, and choose K labels which are more similar with the new data according to Euclidean distance formula.<br>After reading the book <em>Machine Learning in Action</em> written by Peter Harrington, I try kNN algorithm to realize handwrting recognition.<br>kNN code as below:</p>
 <p><pre><br>def classify0(inX, dataSet, labels, k):<br>    dataSetSize = dataSet.shape[0]<br>    diffMat = tile(inX, (dataSetSize,1)) - dataSet<br>    sqDiffMat = diffMat<strong>2<br>    sqDistances = sqDiffMat.sum(axis=1)<br>    distances = sqDistances</strong>0.5<br>    sortedDistIndicies = distances.argsort()<br>    classCount={}<br>    for i in range(k):<br>        voteIlabel = labels[sortedDistIndicies[i]]<br>        classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1<br>    sortedClassCount = sorted(classCount.iteritems(), key=operator.itemgetter(1), reverse=True)<br>    return sortedClassCount[0][0]<br></pre><br>The data set used in the book is revised by <a href="http://archive.ics.uci.edu/ml" target="_blank" rel="noopener">http://archive.ics.uci.edu/ml</a>. Each number has about 200 changes, with each style 32*32 binary representation. Just like：</p>
 <p><img src="https://i.imgur.com/TRW4qs2.png" height="200" width="200"><br><img src="https://i.imgur.com/1faTWId.png" height="200" width="200"><br><img src="https://i.imgur.com/I4DIPTl.png" height="200" width="200"> </p>
 <p>The first thing to prepare is to transform the images into vectors. We need to transform the 32<em>32 matrix to 1</em>1024 vector. The code is :</p>
@@ -90,7 +99,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/03/Have a try with kNN to realize handwriting recognition/" data-id="cjeb7y0sw0001csug3fvn8he6" class="article-share-link">Compartir</a>
+      <a data-url="http://yoursite.com/2018/03/03/Have a try with kNN to realize handwriting recognition/" data-id="cjeb82ubh0001ucug71q7b6oo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -128,7 +137,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/02/28/Discriminative-model-generative-model/" data-id="cjeb7y0sp0000csugm3d4pdjd" class="article-share-link">Compartir</a>
+      <a data-url="http://yoursite.com/2018/02/28/Discriminative-model-generative-model/" data-id="cjeb82ub90000ucug8dd3nxys" class="article-share-link">Share</a>
       
       
     </footer>
@@ -173,7 +182,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/27/hello-world/" data-id="cjeb7y0sz0002csugeg51k927" class="article-share-link">Compartir</a>
+      <a data-url="http://yoursite.com/2018/01/27/hello-world/" data-id="cjeb82ubk0002ucugdhiwf2gb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -199,7 +208,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archivos</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li></ul>
     </div>
@@ -209,12 +218,12 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Posts recientes</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2018/03/03/Have a try with kNN to realize handwriting recognition/">(no title)</a>
+            <a href="/2018/03/03/Have a try with kNN to realize handwriting recognition/">Have a try with kNN to realize handwriting recognition</a>
           </li>
         
           <li>
@@ -238,7 +247,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 Xue Teng<br>
-      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
