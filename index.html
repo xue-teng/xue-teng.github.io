@@ -53,9 +53,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -78,8 +78,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Have-a-try-with-kNN-to-realize-handwriting-recognition"><a href="#Have-a-try-with-kNN-to-realize-handwriting-recognition" class="headerlink" title="Have a try with kNN to realize handwriting recognition"></a>Have a try with kNN to realize handwriting recognition</h1><p>The principle of k-Nearest Neighbor（kNN）is to compare the new data with the labeled data set, and choose K labels which are more similar with the new data according to Euclidean distance formula.<br>After reading the book <em>Machine Learning in Action</em> written by Peter Harrington, I try kNN algorithm to realize handwrting recognition.<br>kNN code as below:</p>
-<p><pre><br>def classify0(inX, dataSet, labels, k):<br>    dataSetSize = dataSet.shape[0]<br>    diffMat = tile(inX, (dataSetSize,1)) - dataSet<br>    sqDiffMat = diffMat<strong>2<br>    sqDistances = sqDiffMat.sum(axis=1)<br>    distances = sqDistances</strong>0.5<br>    sortedDistIndicies = distances.argsort()<br>    classCount={}<br>    for i in range(k):<br>        voteIlabel = labels[sortedDistIndicies[i]]<br>        classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1<br>    sortedClassCount = sorted(classCount.iteritems(), key=operator.itemgetter(1), reverse=True)<br>    return sortedClassCount[0][0]<br></pre><br>The data set used in the book is revised by <a href="http://archive.ics.uci.edu/ml" target="_blank" rel="noopener">http://archive.ics.uci.edu/ml</a>. Each number has about 200 changes, with each style 32*32 binary representation. Just like：<br><img src="https://i.imgur.com/TRW4qs2.png" height="200" width="200"><br><img src="https://i.imgur.com/1faTWId.png" height="200" width="200"><br><img src="https://i.imgur.com/I4DIPTl.png" height="200" width="200"> </p>
+        <hr>
+<h2 id="Have-a-try-with-kNN-to-realize-handwriting-recognition"><a href="#Have-a-try-with-kNN-to-realize-handwriting-recognition" class="headerlink" title="Have a try with kNN to realize handwriting recognition"></a>Have a try with kNN to realize handwriting recognition</h2><p>The principle of k-Nearest Neighbor（kNN）is to compare the new data with the labeled data set, and choose K labels which are more similar with the new data according to Euclidean distance formula.<br>After reading the book <em>Machine Learning in Action</em> written by Peter Harrington, I try kNN algorithm to realize handwrting recognition.<br>kNN code as below:</p>
+<p><pre><br>def classify0(inX, dataSet, labels, k):<br>    dataSetSize = dataSet.shape[0]<br>    diffMat = tile(inX, (dataSetSize,1)) - dataSet<br>    sqDiffMat = diffMat<strong>2<br>    sqDistances = sqDiffMat.sum(axis=1)<br>    distances = sqDistances</strong>0.5<br>    sortedDistIndicies = distances.argsort()<br>    classCount={}<br>    for i in range(k):<br>        voteIlabel = labels[sortedDistIndicies[i]]<br>        classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1<br>    sortedClassCount = sorted(classCount.iteritems(), key=operator.itemgetter(1), reverse=True)<br>    return sortedClassCount[0][0]<br></pre><br>The data set used in the book is revised by <a href="http://archive.ics.uci.edu/ml" target="_blank" rel="noopener">http://archive.ics.uci.edu/ml</a>. Each number has about 200 changes, with each style 32*32 binary representation. Just like：</p>
+<p><img src="https://i.imgur.com/TRW4qs2.png" height="200" width="200"><br><img src="https://i.imgur.com/1faTWId.png" height="200" width="200"><br><img src="https://i.imgur.com/I4DIPTl.png" height="200" width="200"> </p>
 <p>The first thing to prepare is to transform the images into vectors. We need to transform the 32<em>32 matrix to 1</em>1024 vector. The code is :</p>
 <p><pre> def img2vector(filename):<br>    returnVect = zeros((1,1024))<br>    fr = open(filename)<br>    for i in range(32):<br>        lineStr = fr.readline()<br>        for j in range(32):<br>            returnVect[0,32*i+j] = int(lineStr[j])<br>    return returnVect<br></pre><br>Then we need to train and test our algorithm.</p>
 <p><pre>def handwritingClassTest():<br>    hwLabels = []<br>    trainingFileList = listdir(‘trainingDigits’)           #load the training set<br>    m = len(trainingFileList)<br>    trainingMat = zeros((m,1024))<br>    for i in range(m):<br>        fileNameStr = trainingFileList[i]<br>        fileStr = fileNameStr.split(‘.’)[0]     #take off .txt<br>        classNumStr = int(fileStr.split(‘<em>‘)[0])<br>        hwLabels.append(classNumStr)<br>        trainingMat[i,:] = img2vector(‘trainingDigits/%s’ % fileNameStr)<br>    testFileList = listdir(‘testDigits’)        #iterate through the test set<br>    errorCount = 0.0<br>    mTest = len(testFileList)<br>    for i in range(mTest):<br>        fileNameStr = testFileList[i]<br>        fileStr = fileNameStr.split(‘.’)[0]     #take off .txt<br>        classNumStr = int(fileStr.split(‘</em>‘)[0])<br>        vectorUnderTest = img2vector(‘testDigits/%s’ % fileNameStr)<br>        classifierResult = classify0(vectorUnderTest, trainingMat, hwLabels, 3)<br>        print “the classifier came back with: %d, the real answer is: %d” % (classifierResult, classNumStr)<br>        if (classifierResult != classNumStr): errorCount += 1.0<br>    print “\nthe total number of errors is: %d” % errorCount<br>    print “\nthe total error rate is: %f” % (errorCount/float(mTest))<br></pre><br>Now, input kNN.handwritingClassTest( ) in python IDEL. We use the test data to test the accuracy of this method. The output is:</p>
@@ -88,7 +90,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/03/Have a try with kNN to realize handwriting recognition/" data-id="cjeb7x2s50002pkug8ads7a32" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/03/Have a try with kNN to realize handwriting recognition/" data-id="cjeb7y0sw0001csug3fvn8he6" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -126,7 +128,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/02/28/Discriminative-model-generative-model/" data-id="cjeb7x2qi0001pkugnplfk9gw" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/02/28/Discriminative-model-generative-model/" data-id="cjeb7y0sp0000csugm3d4pdjd" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -171,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/27/hello-world/" data-id="cjeb7x2ox0000pkug2dtcjvbo" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/27/hello-world/" data-id="cjeb7y0sz0002csugeg51k927" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -197,7 +199,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li></ul>
     </div>
@@ -207,7 +209,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
         
@@ -236,7 +238,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 Xue Teng<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
