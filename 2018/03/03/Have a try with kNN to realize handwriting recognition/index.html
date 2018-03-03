@@ -7,13 +7,21 @@
   
   <title>Stay Hungry, Stay Foolish</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="Have a try with kNN to realize handwriting recognitionThe principle of k-Nearest Neighbor（kNN）is to compare the new data with the labeled data set, and choose K labels which are more similar with the">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Stay Hungry, Stay Foolish">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/03/03/Have a try with kNN to realize handwriting recognition/index.html">
 <meta property="og:site_name" content="Stay Hungry, Stay Foolish">
+<meta property="og:description" content="Have a try with kNN to realize handwriting recognitionThe principle of k-Nearest Neighbor（kNN）is to compare the new data with the labeled data set, and choose K labels which are more similar with the">
 <meta property="og:locale" content="English">
+<meta property="og:image" content="https://i.imgur.com/TRW4qs2.png">
+<meta property="og:image" content="https://i.imgur.com/1faTWId.png">
+<meta property="og:image" content="https://i.imgur.com/I4DIPTl.png">
+<meta property="og:updated_time" content="2018-03-03T10:06:19.372Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Stay Hungry, Stay Foolish">
+<meta name="twitter:description" content="Have a try with kNN to realize handwriting recognitionThe principle of k-Nearest Neighbor（kNN）is to compare the new data with the labeled data set, and choose K labels which are more similar with the">
+<meta name="twitter:image" content="https://i.imgur.com/TRW4qs2.png">
   
     <link rel="alternate" href="/atom.xml" title="Stay Hungry, Stay Foolish" type="application/atom+xml">
   
@@ -64,9 +72,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Have a try with kNN to realize handwriting recognition" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Have a try with kNN to realize handwriting recognition" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/03/03/Have a try with kNN to realize handwriting recognition/" class="article-date">
   <time datetime="2018-03-03T10:06:37.382Z" itemprop="datePublished">2018-03-03</time>
@@ -94,94 +100,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-Discriminative-model-generative-model" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/02/28/Discriminative-model-generative-model/" class="article-date">
-  <time datetime="2018-02-28T07:16:30.000Z" itemprop="datePublished">2018-02-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/28/Discriminative-model-generative-model/">Discriminative model &amp; generative model</a>
-    </h1>
+    <a href="/2018/02/28/Discriminative-model-generative-model/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">Discriminative model &amp; generative model</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>As we know, machine learning can be classified into supervised learning and unsupervised learning. In a simple way, the former can be seemed as a classifying task, whose object is to train the classifier according to the data set, while the latter has no information about the categories of the whole data set, which means that the task is to cluster.<br>Generally, in the supervised learning, we often divide the whole data set into 2 parts: the training data and test data. The key point is to train a model on the basis of the training data, and the test data will be used to test the accuracy of the model.<br>In a general way, there are two functions used as the model：<br><strong><em>decision function : Y=f(X)<br>conditional probability distribution: P(Y|X)</em></strong><br>In the decision function, there is a threshold value, and the classification of X is based on the comparison of X and the threshold. While, in the conditional probability distribution, the classification is based on the value of probability.<br>Then, we call the two kinds of methods to obtain the model as the discriminative approach and generative approach, and the output is discriminative model and Generative Model, separately. Generative model implicitly or explicitly represent a data distribution, often allowing for new data to be sampled or “generated” through a process, hence their name. Discriminative model, on the other hand, are less ambitious. Rather than modeling distributions, they attempt to model class boundaries.<br>In the supervised learning setup, where we have data X and<br>labels Y,  discriminative model is used for primarily prediction tasks, and it learn the conditional P(Y|X) or the decision function Y=f(X). In contrast,generative model learn the joint probability P(X ,Y) first, except that, it also need to learn P(X). After that , it can get the conditional P(Y|X) to classify.<br>In the last, we need to talk about the strengths and weaknesses of these two models. The discriminative approach is simplified, which deals with the data directly, and it can abstract the data or define the feature as casually as possible. However, it can not reveal the inherent characteristics of the data, and it aims to find the boundary of different kinds.<br>While, generative approach aims to express the distribution of data from a statistical point of view, and it can reveal the similarity of data itself. In addition, we can get the discriminative model from the generative model, vice versa. And if the data is enough, the generative model is faster to converge. The most important, it can be applied into the problems consisting hidden variables. </p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><p>[1]: D Ramachandram, GW Taylor.  Deep Multimodal Learning: A Survey on Recent Advances and Trends. IEEE Signal Processing Magazine [J] , 2017 , 34 (6) :96-108.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/02/28/Discriminative-model-generative-model/" data-id="cjeb7edew0001k4ughyqi5nxz" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/01/27/hello-world/" class="article-date">
-  <time datetime="2018-01-27T08:05:02.557Z" itemprop="datePublished">2018-01-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/27/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/27/hello-world/" data-id="cjeb7edgf0002k4uguebmqul5" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
